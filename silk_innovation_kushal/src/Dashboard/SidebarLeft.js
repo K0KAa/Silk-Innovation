@@ -13,8 +13,6 @@ const SidebarLeft = ({sidebaropen}) => {
                 <AccountBalanceWalletOutlinedIcon className="icon"/>
                 <SettingsApplicationsOutlinedIcon className="icon"/>
                 <AccountCircleOutlinedIcon className="icon"/>
-
-            
         </SidebarWrapper>
     )
 }
@@ -37,7 +35,7 @@ const SidebarWrapper = styled.div `
     -moz-box-shadow: 10px -1px 27px -2px rgba(0,0,0,0.75);
     .icon{
         cursor: pointer;
-        color: lightcyan
+        font-size: 2rem;
     }
 
 `

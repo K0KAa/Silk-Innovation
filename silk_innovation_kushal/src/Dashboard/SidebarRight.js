@@ -60,5 +60,8 @@ const SidebarRightWrapper = styled.div `
     .iconLayout{
         display: flex;
     }
+    h4{
+        text-align: center;
+    }
 
 `;

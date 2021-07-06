@@ -3,28 +3,32 @@ import styled from 'styled-components'
 import MenuIcon from '@material-ui/icons/Menu';
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 import { Avatar, Switch, TextField, FormControl, Select,MenuItem } from '@material-ui/core';
+import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
-const Header = ({handleSidebar}) => {
+const Header = ({handleSidebar, classes}) => {
 
     return (
         <HeaderWrapper>
             <div className="headerLeft">
-                <MenuIcon  className="burger"  onClick={handleSidebar}/>
+                <MenuIcon  className="burger"  onClick={handleSidebar} style={{marginLeft: "2rem"}}/>
                 
-                <TextField id="standard-basic" placeholder="Search" style={{marginRight: "1rem"}}/>
+                <TextField className={classes.root}
+                    InputProps={{className: classes.input}}
+                    id="standard-basic" placeholder="Search" style={{marginRight: "1rem"}}/>
                 
                 <FormControl className="dropDown">
-                    <Select
+                    <Select 
                         displayEmpty
-                        defaultValue ="None"
+                        defaultValue = {10}
                         inputProps={{ 'aria-label': 'Without label' }}
                     >
                     <MenuItem>
                         None
                     </MenuItem>
-                    <MenuItem value={10} selected>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    <MenuItem value={10} selected>En</MenuItem>
+                    <MenuItem value={20}>Np</MenuItem>
+                    <MenuItem value={30}>In</MenuItem>
                     </Select>
                 </FormControl>
                 <FullscreenExitIcon />
@@ -42,14 +46,25 @@ const Header = ({handleSidebar}) => {
                 
                 <div className="avatar">
                     <p>Kushal Kattel</p>
-                    <Avatar />
+                    <Avatar style={{marginLeft: "1rem", marginRight: "1rem"}}/>
                 </div>
             </div>
         </HeaderWrapper>
     )
 }
+const styles = {
+    root: {
+      background: "#669999"
+    },
+    input: {
+      color: "white"
+    }
+  }
+Header.propTypes = {
+    classes: PropTypes.object.isRequired
+  };
+export default withStyles(styles)(Header)
 
-export default Header
 
 
 const HeaderWrapper = styled.nav `
@@ -57,10 +72,10 @@ const HeaderWrapper = styled.nav `
     position: --webkit-sticky;
     height: 4rem;
     display: flex;
-    
+    background: #669999;
+    color:white;
     justify-content: space-between;
     border-bottom: 3px solid grey;
-    margin:0rem 1rem 0rem 1rem;
     .headerLeft{
         margin-top: 0px;
         display:flex;
@@ -95,6 +110,8 @@ const HeaderWrapper = styled.nav `
     }
 
     .logoStyle {
+        color:black;
+        font-weight: 800;
         border-radius: 999px;
         background: aqua;
         width: 3rem;

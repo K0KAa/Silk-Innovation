@@ -58,7 +58,7 @@ const DashboardWrapper = styled.section `
     display: flex;
     justify-content: space-between;
     margin-right: 0px;
-    background: rgb(240,240,240);
+    background: rgb(230,230,230);
     .left{
         width: 4rem;
         display:flex;

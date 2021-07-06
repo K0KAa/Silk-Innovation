@@ -1,11 +1,11 @@
 import React from 'react'
 import { Accordion, AccordionSummary, Typography, AccordionDetails, Chip, Divider, AccordionActions, Button } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import styled from "styled-components"
 //Material UI Accordion
 const Accordian = () => {
     return (
-        <div className="accordion">
+        <AccordionWrapper>
           <Accordion defaultExpanded>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -44,8 +44,15 @@ const Accordian = () => {
                   </Button>
               </AccordionActions>
           </Accordion>
-      </div>
+      </AccordionWrapper>
     )
 }
 
 export default Accordian
+
+
+const AccordionWrapper = styled.div`
+    box-shadow: 10px -1px 27px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px -1px 27px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px -1px 27px -2px rgba(0,0,0,0.75);
+`;

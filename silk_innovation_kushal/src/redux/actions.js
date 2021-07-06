@@ -1,7 +1,8 @@
 import { ADD_USER, FETCH_USER,  } from "./Types"
 
-
+//Action Creators
 //Post Request for login
+const token =647061697361
 export const addUsers =postData => dispatch =>{
     console.log(postData)
     fetch("https://stagingapi.icash.com.np/api/login", {
@@ -9,7 +10,7 @@ export const addUsers =postData => dispatch =>{
         headers: {
             'Accept': 'application/json',
             'content-type': 'application/json',
-            'App-Authorizer': 647061697361
+            'App-Authorizer': `Bearer ${token}`
         },
         body: JSON.stringify(postData)
     })
