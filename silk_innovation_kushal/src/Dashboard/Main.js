@@ -2,7 +2,6 @@ import React from 'react'
 import styled from "styled-components"
 import Cards from './Cards'
 import Accordian from './Accordion'
-import { Container} from '@material-ui/core'
 
 const Main = () => {
     return (

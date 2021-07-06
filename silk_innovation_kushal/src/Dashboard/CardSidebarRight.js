@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 
+//Material UI card For Sidebar
 const CardSidebarRight = ({Icon, title, desc}) => {
     return (
         <>

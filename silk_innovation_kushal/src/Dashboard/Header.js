@@ -20,7 +20,7 @@ const Header = ({handleSidebar}) => {
                         inputProps={{ 'aria-label': 'Without label' }}
                     >
                     <MenuItem>
-                       None
+                        None
                     </MenuItem>
                     <MenuItem value={10} selected>Ten</MenuItem>
                     <MenuItem value={20}>Twenty</MenuItem>

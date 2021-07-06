@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from "styled-components"
-import Paper from '@material-ui/core/Paper';
-import Cards from './Cards';
 import CardSidebarRight from './CardSidebarRight';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import PhoneIcon from '@material-ui/icons/Phone';

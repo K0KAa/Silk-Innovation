@@ -1,10 +1,10 @@
 import React, {useState, useRef, useEffect} from 'react'
 import styled from "styled-components"
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@material-ui/icons/Visibility'
 import { Link } from "react-router-dom"
 import * as EmailValidator from "email-validator"
 import {connect} from "react-redux"
-import { addUsers } from '../redux/actions';
+import { addUsers } from '../redux/actions'
 import PropTypes from "prop-types"
 
 const Login = ({addUsers}) => {
@@ -85,6 +85,7 @@ const Login = ({addUsers}) => {
        }
     }
 
+    //Email/Phone Number and Password Check
     function checkValidity() {
         if((isEmail || isNumber) && checkPasswordValidity){
             if(passwordLength === 4 && isEmail){
@@ -127,6 +128,7 @@ const Login = ({addUsers}) => {
         }
     }
 
+    //OnSubmit
     function handleSubmit(e){
         e.preventDefault()
         checkValidity()
@@ -160,6 +162,8 @@ const Login = ({addUsers}) => {
                         <VisibilityIcon className="icon" onClick={handleVisibility}/>
                     </div>
                 </div>
+
+                {/* Sign In Botton */}
                 <Link className="signIn" to= "/">
                     {btnValid ? 
                         <button style={{backgroundColor: "aqua"}} type="submit" onClick={handleSubmit}>Sign In</button>

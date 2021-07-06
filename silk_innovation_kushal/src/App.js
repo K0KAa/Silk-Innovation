@@ -1,6 +1,6 @@
-import React from "react";
-import Login from './Login/Login';
-import Dashboard from './Dashboard/Dashboard';
+import React from "react"
+import Login from './Login/Login'
+import Dashboard from './Dashboard/Dashboard'
 import {Switch, Route} from "react-router-dom"
 import { connect } from "react-redux"
 
@@ -15,14 +15,13 @@ function App() {
 
   return (
       <Switch>
-        <Route exact path= "/">
-          <Dashboard />
-        </Route>
-        <Route  path= "/login">
-          {user ? <Dashboard /> : <Login />}
-        </Route>
+          <Route exact path= "/">
+              <Dashboard />
+          </Route>
+          <Route  path= "/login">
+              {user ? <Dashboard /> : <Login />}
+          </Route>
       </Switch>
-
   );
 }
 
@@ -34,4 +33,4 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, null)(App)
