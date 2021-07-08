@@ -72,7 +72,7 @@ const HeaderWrapper = styled.nav `
     position: --webkit-sticky;
     height: 4rem;
     display: flex;
-    background: #669999;
+    background: #009999;
     color:white;
     justify-content: space-between;
     border-bottom: 3px solid grey;
