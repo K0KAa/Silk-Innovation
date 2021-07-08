@@ -5,21 +5,15 @@ import {Switch, Route} from "react-router-dom"
 import { connect } from "react-redux"
 
 function App() {
-  const [user, setUser ] = React.useState(false)
-  // if(window.localStorage.getItem("Token")) {
-  //   setUser(true)
-  // }
-  // else{
-  //   setUser(false)
-  // }
+  const access_token =window.localStorage.getItem("access_token")
 
   return (
       <Switch>
           <Route exact path= "/">
-              <Dashboard />
+              {access_token ? <Dashboard /> : <Login />}
           </Route>
           <Route  path= "/login">
-              {user ? <Dashboard /> : <Login />}
+              {access_token ? <Dashboard /> : <Login />}
           </Route>
       </Switch>
   );

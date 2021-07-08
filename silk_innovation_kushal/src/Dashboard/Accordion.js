@@ -1,58 +1,59 @@
 import React from 'react'
-import { Accordion, AccordionSummary, Typography, AccordionDetails, Chip, Divider, AccordionActions, Button } from '@material-ui/core'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {Card, CardContent } from '@material-ui/core'
 import styled from "styled-components"
-//Material UI Accordion
-const Accordian = () => {
+import { makeStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+//Material UI Card
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(0),
+      },
+    },
+  }));
+  
+const Accordian = ({image}) => {
+    const classes = useStyles();
+
     return (
-        <AccordionWrapper>
-          <Accordion defaultExpanded>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1c-content"
-                id="panel1c-header"
-              >
-                <div>
-                    <Typography>Location</Typography>
-                </div>
-                <div>
-                    <Typography>Select trip destination</Typography>
-                </div>
+        <CardWrapper>
+            <Card className="card">
+                
+                    {image && <img src ={image} alt="Laptop and Notebook"/> }
+                       <div style={{width: "100%", display:"flex", justifyContent: "center", alignItems: "center"}}>
+                        <div style={{width: "5rem", height: "5rem"}}>
+                            <Fab color="secondary" aria-label="add">
+                                <AddIcon />                    
+                            </Fab>
+                        </div>
+                       </div>
 
-                </AccordionSummary>
-                <AccordionDetails>
 
-                <div>
-                    <Chip label="Barbados" onDelete={() => {}} />
-                </div>
-
-                <div className="">
-                  <Typography variant="caption">
-                        Select your destination of choice
-                        <br />
-                        <a href="#secondary-heading-and-columns" className="">
-                            Learn more
-                        </a>
-                  </Typography>
-                </div>
-              </AccordionDetails>
-              <Divider />
-              <AccordionActions>
-                  <Button size="small">Cancel</Button>
-                  <Button size="small" color="primary">
-                      Save
-                  </Button>
-              </AccordionActions>
-          </Accordion>
-      </AccordionWrapper>
+            </Card>
+        </CardWrapper>
     )
 }
 
 export default Accordian
 
 
-const AccordionWrapper = styled.div`
-    box-shadow: 10px -1px 27px -2px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 10px -1px 27px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px -1px 27px -2px rgba(0,0,0,0.75);
+const CardWrapper = styled.div`
+    height: 9rem;
+    
+    box-shadow: 10px -1px 10px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px -1px 10px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px -1px 10px -2px rgba(0,0,0,0.75);
+    .card{
+        height: 100%;
+    }
+    .img{
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
 `;

@@ -6,8 +6,8 @@ import { Avatar, Switch, TextField, FormControl, Select,MenuItem } from '@materi
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 
-const Header = ({handleSidebar, classes}) => {
-
+const Header = ({handleSidebar, classes, user}) => {
+    const { name, balance, avatar} =user
     return (
         <HeaderWrapper>
             <div className="headerLeft">
@@ -41,12 +41,12 @@ const Header = ({handleSidebar, classes}) => {
                 <Switch />
                 <div className="wallet">
                     <i>Wallet Balance</i>
-                    <b>Rs 9414.32</b>
+                    <b>Rs {balance}</b>
                 </div>
                 
                 <div className="avatar">
-                    <p>Kushal Kattel</p>
-                    <Avatar style={{marginLeft: "1rem", marginRight: "1rem"}}/>
+                    <p>{name}</p>
+                    <Avatar src={avatar} style={{marginLeft: "1rem", marginRight: "1rem"}}/>
                 </div>
             </div>
         </HeaderWrapper>

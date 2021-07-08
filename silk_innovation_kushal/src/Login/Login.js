@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 import * as EmailValidator from "email-validator"
 import {connect} from "react-redux"
 import { addUsers } from '../redux/actions'
-import PropTypes from "prop-types"
 
 const Login = ({addUsers}) => {
     
@@ -14,7 +13,7 @@ const Login = ({addUsers}) => {
     const [btnValid, setBtnValid] = useState(false)
     const [visiblePassword, setVisiblePassword] = useState(false)
     const firstTimeRender = useRef(true);
-    
+
     useEffect(() => {
         if (!firstTimeRender.current){
             isEmail = handleEmailValidation()
@@ -26,16 +25,18 @@ const Login = ({addUsers}) => {
             else{
                 setBtnValid(false)
             }
-            console.log(`btnValid = ${btnValid}`)
-            console.log(`is email = ${isEmail}`)
-            console.log(`is number = ${isNumber}`)
-            console.log(`is password= ${isPassword}`)
+            // console.log(`btnValid = ${btnValid}`)
+            // console.log(`is email = ${isEmail}`)
+            // console.log(`is number = ${isNumber}`)
+            // console.log(`is password= ${isPassword}`)
          }
        }, [identity, password])
        
        useEffect(() => { 
          firstTimeRender.current = false 
        }, [])
+
+    
 
     var isPassword = false
     var isEmail = false
@@ -49,7 +50,6 @@ const Login = ({addUsers}) => {
     function handlePassword(e){
         setPassword(e.target.value)
     }
-    
 
     //Toggling the password visibility
     function handleVisibility() {
@@ -89,7 +89,6 @@ const Login = ({addUsers}) => {
     function checkValidity() {
         if((isEmail || isNumber) && checkPasswordValidity){
             if(passwordLength === 4 && isEmail){
-                console.log("pin email")
                 let postData = {
                     email: identity,
                     pin: password,
@@ -98,9 +97,8 @@ const Login = ({addUsers}) => {
                 addUsers(postData)
             }
             else if(passwordLength === 4 && isNumber){
-                console.log("pin phNo.")
                 let postData = {
-                    number: identity,
+                    mobile_no: identity,
                     pin: password,
                     fcm_token: 'no_fcm'
                 }
@@ -108,16 +106,16 @@ const Login = ({addUsers}) => {
             }
             else if(isPassword && isNumber)
             {
-                console.log("password phn")
+                // console.log("password phn")
                 let postData ={
-                    number: identity,
+                    mobile_no: identity,
                     password: password,
                     fcm_token: 'no_fcm'
                 }
                 addUsers(postData)
             }
             else{
-                console.log("pass email")
+                // console.log("pass email")
                 let postData ={
                     email: identity,
                     password: password,
@@ -130,9 +128,10 @@ const Login = ({addUsers}) => {
 
     //OnSubmit
     function handleSubmit(e){
-        e.preventDefault()
         checkValidity()
     }
+
+ 
 
     return (
         <LoginWrapper validity ={btnValid.value}>
@@ -143,10 +142,9 @@ const Login = ({addUsers}) => {
                 {/* Email/ Ph. No field */}
                 <div className="loginCrediential">
                     <label>Phone Number/ Email</label>
-                    <input value={identity}
+                    <input  value={identity}
                             type="text"
                             onChange = {handleIdentity}
-                            onBlur ={handleSubmit}
                      />
                 </div>
 
@@ -164,31 +162,24 @@ const Login = ({addUsers}) => {
                 </div>
 
                 {/* Sign In Botton */}
-                <Link className="signIn" to= "/">
+                
                     {btnValid ? 
-                        <button style={{backgroundColor: "aqua"}} type="submit" onClick={handleSubmit}>Sign In</button>
-                    :
-                        <button style={{backgroundColor: "white", color: "black"}} type="button" disabled={true}>Sign In</button>
+                    <Link className="signIn" to= "/">
+                        <button style={{backgroundColor: "aqua"}} type="submit" onClick={(e) =>handleSubmit(e)}>Sign In</button>
+                    </Link>
+                    :   
+                        <Link className="signIn" to= "">
+                            <button style={{backgroundColor: "white", color: "black"}} type="button" disabled={true}>Sign In</button>
+                        </Link>
                     }
-                </Link>
+                
            </form>
         </LoginWrapper>
     )
 }
-Login.propTypes = {
-    fetchUsers: PropTypes.func.isRequired
-}
-
-const mapStateToProps = state =>{
-    const {userState} = state
-    const { newUser } = userState
-    return {
-        newUser: newUser
-    }
-}
 
 
-export default connect(mapStateToProps, {addUsers})(Login)
+export default connect(null, {addUsers})(Login)
 
 
 //Styled Components
@@ -197,7 +188,7 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
-    background: #353839;
+    background: black;
     color:black;
     height: 100vh;
     position: static;
@@ -213,7 +204,7 @@ const LoginWrapper = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        background: #CCCCCC;
+        background: white;
         border-radius: 10px;       
     }
 
@@ -233,14 +224,17 @@ const LoginWrapper = styled.div`
     }
     .icon{
         position: absolute;
-        right: 1px;
+        right: 5px;
+        top: 28px;
+        cursor: pointer
     }
 
     .signIn{
+        text-decoration: none;
         margin: auto;
         width: 7rem;
         height: 2rem;
-        
+        display: flex;
     }
 
     .signIn button{
@@ -260,7 +254,7 @@ const LoginWrapper = styled.div`
     input{
         border-radius: 4px;
         height: 25px;
-        border:none
+        border: 2px solid black;
     }
 
     label{

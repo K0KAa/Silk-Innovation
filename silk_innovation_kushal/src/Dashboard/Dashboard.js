@@ -6,22 +6,23 @@ import Main from './Main'
 import styled from "styled-components"
 
 import { connect } from 'react-redux'
-import { fetchUsers } from '../redux/actions'
+import { addUsers } from '../redux/actions'
 import PropTypes from "prop-types"
 
-const Dashboard = ({fetchUsers}) => {
+const Dashboard = ({addUsers}) => {
     const [sidebarOpen, setSidebarOpen] = React.useState(true)
 
     React.useEffect(()=>{
-        fetchUsers()
+        addUsers()
+       
     },[])
-
+    var user = JSON.parse(localStorage.getItem('user'))
     const handleSidebar = () =>{
         setSidebarOpen(!sidebarOpen)
     }
     return (
         <>
-            <Header handleSidebar={handleSidebar}/>
+            <Header handleSidebar={handleSidebar}  user={user} />
             <DashboardWrapper>
             <div className="left">
                 <SidebarLeft sidebaropen ={sidebarOpen}/>
@@ -30,28 +31,16 @@ const Dashboard = ({fetchUsers}) => {
                 <Main />
             </div>
             <div className="right">
-                <SidebarRight  />
+                <SidebarRight/>
             </div>
             </DashboardWrapper>
         </>
     )
 }
 
-Dashboard.propTypes ={
-    fetchUsers: PropTypes.func.isRequired,
-    Users: PropTypes.array.isRequired
-}
-
-const mapStateToProps = state =>{
-    const {userState} = state
-    const {Users} = userState
-    return {
-        users: Users
-    }
-}
 
 //export default Dashboard
-export default connect(mapStateToProps, {fetchUsers})(Dashboard)
+export default connect(null, {addUsers})(Dashboard)
 
 
 const DashboardWrapper = styled.section `

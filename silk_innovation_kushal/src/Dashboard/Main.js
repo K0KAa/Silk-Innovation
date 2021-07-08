@@ -23,7 +23,9 @@ const Main = () => {
                 </div>
                 <div className ="accordion">
                     <div style={{marginBottom: "10px"}}>   
-                        <Accordian className="singleAccordion"/>
+                        <Accordian image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dGVjaG5vbG9neXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+                                   className="singleAccordion" 
+                        />
                     </div>
                     <Accordian className="singleAccordion" />
                 </div>
@@ -36,6 +38,7 @@ export default Main
 const MainWrapper = styled.div `
     margin-top: 1rem;
     height: 86vh;
+    max-width: 40rem;
     margin-right: 1rem;
     display: flex;
     flex-direction: column;
