@@ -43,7 +43,6 @@ const Header = ({handleSidebar, classes, user}) => {
                     <i>Wallet Balance</i>
                     <b>Rs {balance}</b>
                 </div>
-                
                 <div className="avatar">
                     <p>{name}</p>
                     <Avatar src={avatar} style={{marginLeft: "1rem", marginRight: "1rem"}}/>
@@ -68,12 +67,13 @@ export default withStyles(styles)(Header)
 
 
 const HeaderWrapper = styled.nav `
+    width: 100vw;
     position: sticky;
     position: --webkit-sticky;
     height: 4rem;
-    display: flex;
     background: #009999;
-    color:white;
+    color: white;
+    display: flex;
     justify-content: space-between;
     border-bottom: 3px solid grey;
     .headerLeft{

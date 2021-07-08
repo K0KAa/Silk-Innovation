@@ -21,14 +21,14 @@ const Main = () => {
                     <Cards Icon={FlightIcon} desc="Send Funds"/>
                 </div>
                 </div>
-                <div className ="accordion">
-                    <div style={{marginBottom: "10px"}}>   
+
+                    <div className ="accordion" style={{marginBottom: "10px"}}>   
                         <Accordian image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dGVjaG5vbG9neXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
                                    className="singleAccordion" 
                         />
                     </div>
                     <Accordian className="singleAccordion" />
-                </div>
+
         </MainWrapper>
     )
 }

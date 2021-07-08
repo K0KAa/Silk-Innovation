@@ -1,4 +1,4 @@
-import { ADD_USER, FETCH_USER,  } from "./Types"
+import { FETCH_USER,  } from "./Types"
 
 
 //Action Creators

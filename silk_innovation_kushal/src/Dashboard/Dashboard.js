@@ -7,7 +7,7 @@ import styled from "styled-components"
 
 import { connect } from 'react-redux'
 import { addUsers } from '../redux/actions'
-import PropTypes from "prop-types"
+
 
 const Dashboard = ({addUsers}) => {
     const [sidebarOpen, setSidebarOpen] = React.useState(true)
@@ -21,20 +21,24 @@ const Dashboard = ({addUsers}) => {
         setSidebarOpen(!sidebarOpen)
     }
     return (
-        <>
-            <Header handleSidebar={handleSidebar}  user={user} />
-            <DashboardWrapper>
-            <div className="left">
-                <SidebarLeft sidebaropen ={sidebarOpen}/>
+        <DashboardWrapper>
+            <div className="header">
+                <Header handleSidebar={handleSidebar}  user={user} />
             </div>
-            <div className="center">
-                <Main />
+            <div className="centerContent">
+                <div className="left">
+                    <SidebarLeft sidebaropen ={sidebarOpen}/>
+                </div>
+                <div className="centerRight">
+                    <div className="center">
+                        <Main />
+                    </div>
+                    <div className="right">
+                        <SidebarRight/>
+                    </div>
+                </div>
             </div>
-            <div className="right">
-                <SidebarRight/>
-            </div>
-            </DashboardWrapper>
-        </>
+        </DashboardWrapper>
     )
 }
 
@@ -45,20 +49,34 @@ export default connect(null, {addUsers})(Dashboard)
 
 const DashboardWrapper = styled.section `
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-right: 0px;
     background: rgb(230,230,230);
-    .left{
-        width: 4rem;
+    .centerContent{
+        display: flex;
+    }
+    .centerRight{
         display:flex;
+
+    }
+    .left{
+        margin-right: 1rem;
     }
     .middle{
-       flex:  2;
+       flex:  5;
         width:60%;
         display:flex;
     }
     .right{
         display:flex;
-        flex:  0.7;
+        flex: 1;
+    }
+    @media (max-width: 800px) {
+        .centerRight{
+            display: flex;
+            flex-direction: column;
+            flex: wrap;
+        }
     }
 `;
